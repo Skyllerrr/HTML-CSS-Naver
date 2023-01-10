@@ -1,0 +1,334 @@
+/*
+* = 모든 태그에 적용
+*/
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: Dotum,'돋움',Helvetica,"Apple SD Gothic Neo",sans-serif;
+}
+
+/*
+(id = 태그에 지정하게 되면 그 태그만 유일하게 사용함)
+(class = 여러 태그에 지정할 수 있음)
+
+
+(blind속성은 display: none;대신 쓰면서, 화면에 보여주지 않는 속성을 나타냄)
+*/
+.blind {
+    position: absolute;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    margin: -1px;
+    width: 1px;
+    height: 1px;
+}
+
+.relative {
+    position: absolute;
+    border-top: 1px solid #f1f3f6;
+    border-bottom: 1px solid #d1d8e4;
+}
+
+.center-align {
+    margin: 0 auto;
+    width: 1080px;
+}
+
+/*
+자식 선택자 (바로 밑에있는 태그면 >로 구분) 
+또한, 자식도 자손이기 때문에 기호안쓰고 바로 사용하는 자손 선택자 처럼 사용해도 무방
+*/
+
+/*
+display: inline-block을 네이버로고와 검색창부분 태그에 지정해주면서 왼쪽 오른쪽 나누어 구분할 수 있도록 만든다.
+문구가 세로로 안쌓이고, 가로로 나란히 지정됨
+
+또한, div대신 span태그를 사용해도 무방함 - 이는 inline으로만 지정됨
+(block - width를 100%주는 블럭 형식)
+(inline - 지정한 문구나 컨텐츠 만큼만의 공간을 가지는 형식)
+(inline-block - 지정한 문구나 컨텐츠 만큼만의 공간을 가지지만, width와 height등 길이와 너비를 조절할 수 있음)
+*/
+#header-search h1 { 
+    width: 198px;
+    height: 48px;
+    display: inline-block;
+    background-image: url(./naverlogo.png);
+    background-position: -4px -10px;
+    background-repeat: no-repeat;
+    vertical-align: middle; /* vertical-align: middle;은 inline이나 inline-block에서만 사용가능, block - 적용 안됨 */
+    position: relative;
+    top: -1px;
+}
+
+#header-search h1 span {
+    display: none;
+}
+
+header {
+    height: 170px;
+}
+
+#header-top {
+    float: right;
+    margin-top: 8px;
+}
+
+#header-top span {
+    color: #888;
+    letter-spacing: -1px;
+    font-size: 11px;
+    line-height: 22px;
+}
+
+#header-search {
+    clear: both;
+    padding-top: 9px;
+}
+
+#header-search a {
+    text-decoration: none;
+}
+
+/*
+자손 선택자 (기호안쓰고 바로 사용)
+
+#header-search h1 {
+    width: 280px;
+}
+
+*/
+
+#header-search h2 {
+    display: none;
+}
+
+#header-search fieldset {
+    margin-left: 18px;
+    padding: 12px 0 12px 10px;
+    border: 3px solid #03cf03;
+    width: 521px;
+    height: 49px;
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+}
+
+#header-search fieldset input {
+    border: none;
+    padding: 0;
+    outline: none;
+    vertical-align: top;
+    width: 405px;
+    height: 23px;
+}
+
+/*
+position 속성 - absolute (자신의 부모들을 계속해서 찾게되면서 html까지 올라가고, html을 기본 컨테이닝 블록이라고 생각하게 되어 이 상황에서 예를 들어, top이나 right같은 속성을 부여하지않아도 기존의 배치 흐름에서 벗어나게된다.
+따라서, absolute를 하고, 이동 속성을 적용하여 버튼의 위치를 맞춰준다.)
+
+(이 프로젝트의 네이버 검색 버튼을 네이버 검색창 오른쪽 끝에 붙이기 위해서는 네이버 검색창을 컨테이닝 블록을 만들면 된다.
+즉, 네이버 검색창을 부모로 만들면 되고, 이는 position 속성을 static만 아니면 가능하기 때문에 검색창(fieldset)을 relative로 검색 버튼(button)을 absolute로 속성을 지정하였다.)
+
+(position속성이 relative같은 경우에는 자신의 static 위치를 기반으로 하여 위치를 잡는다.
+ position속성이 absolute같은 경우에는 자신의 컨테이닝 블록을 기반으로 하여 위치를 잡는다.)
+*/
+#header-search fieldset button {
+    width: 49px;
+    height: 49px;
+    border: none;
+    padding: 0;
+    background: #03cf03;
+    position: absolute;
+    right: -2px; 
+    top: -3px;
+}
+
+#search-keyboard {
+    background-image: url(./naverlogo.png);
+    background-repeat: no-repeat;
+    background-position: -33px -60px;
+    width: 19px;
+    height: 11px;
+    display: inline-block;
+    vertical-align: middle;
+    padding: 0 10px;
+}
+
+
+#search-history {
+    background-image: url(./naverlogo.png);
+    background-repeat: no-repeat;
+    background-position: -87px -60px;
+    width: 9px;
+    height: 4px;
+    display: inline-block;
+    vertical-align: middle;
+    padding: 0 6px;
+}
+
+#search-image {
+    background-image: url(./naverlogo.png);
+    background-position: -3px -60px;
+    background-repeat: no-repeat;   
+    width: 21px;
+    height: 21px;
+    display: inline-block;
+    margin: 14px; /* 여기서 돋보기 모양의 이미지를 가운데로 정렬하기 위해서 margin 속성으로 가운데를 맞춰도 되지만, flex: 50%; 로 사용해도 무방하다. */
+}
+
+/*
+position 속성 - absolute (자신의 부모들을 계속해서 찾게되면서 html까지 올라가고, html을 기본 컨테이너 박스라고 생각하게 되어 이 상황에서 예를 들어, top이나 right같은 속성을 부여하지않아도 기존의 배치 흐름에서 벗어나게된다.
+따라서, absolute를 하고, 이동 속성을 적용하여 버튼의 위치를 맞춰준다.)
+
+(이 프로젝트의 네이버 검색 버튼을 네이버 검색창 오른쪽 끝에 붙이기 위해서는 )
+*/
+
+nav {
+    height: 46px;
+}
+
+nav ul {
+    display: inline-block;
+    margin: 0;
+    padding: 16px 0 0 4px;
+    list-style: none;
+}
+
+nav li {
+    display: inline-block;
+}
+
+
+/*
+네이버 화면에서 메일, 카페, 블로그 등의 nav메뉴에는 공통적인 속성으로
+높이와 display, background-image, repead의 속성이 공통적으로 같기 때문에
+li:first-child span:first-child안에 묶어서 정의해준다.
+*/
+
+/*
+css우선순위 = !important > inline style > id > class > tag 순서이다.
+우선순위가 높은 경우부터 속성이 적용된다.
+*/
+nav li span:first-child {
+    height: 26px;
+    display: inline-block;
+    background-image: url(./navernav.png);
+    background-repeat: no-repeat;
+    margin-left: 14px;
+}
+
+nav li:first-child span:first-child {
+    width: 25px;
+    background-position: 0 -285px;
+    margin-left: 0;
+}
+
+nav li:nth-child(2) span:first-child {
+    width: 27px;
+    background-position: -279px -52px;
+}
+
+nav li:nth-child(3) span:first-child {
+    width: 40px;
+    background-position: -100px -182px;
+}
+
+nav li:nth-child(4) span:first-child {
+    width: 40px;
+    background-position: -101px -156px;
+}
+
+nav li:nth-child(5) span:first-child {
+    width: 26px;
+    background-position: -279px -156px;
+}
+
+nav li:nth-child(6) span:first-child {
+    width: 25px;
+    background-position: -70px -285px;
+}
+
+nav li:nth-child(7) span:first-child {
+    width: 40px;
+    background-position: -125px -130px;
+}
+
+nav li:nth-child(8) span:first-child {
+    width: 26px;
+    background-position: -279px -208px;
+}
+
+nav li:nth-child(9) span:first-child {
+    width: 26px;
+    background-position: -128px -104px;
+}
+
+nav li:nth-child(10) span:first-child {
+    width: 26px;
+    background-position: -36px -259px;
+}
+
+nav li:nth-child(11) span:first-child {
+    width: 39px;
+    background-position: -151px -156px;
+}
+
+nav li:nth-child(12) span:first-child {
+    width: 26px;
+    background-position: -279px -130px;
+}
+
+nav li:nth-child(13) span:first-child {
+    width: 26px;
+    background-position: -234px -233px;
+}
+
+nav li:nth-child(14) span:first-child {
+    width: 26px;
+    background-position: -72px -259px;
+}
+
+nav li:nth-child(15) span:first-child {
+    width: 13px;
+    background-position: -140px -78px;
+}
+
+nav li:nth-child(16) span:first-child {
+    width: 26px;
+    background-position: -279px 0;
+}
+
+nav li.more:first-child span:first-child {
+    width: 55px;
+    background-position: 0 -104px;
+}
+
+.nav-divider {
+    display: inline-block;
+    margin: 18px 16px 0;
+    width: 1px;
+    height: 14px;
+    background: #ebeef3;
+}
+
+#search-ranking {
+    position: absolute;
+    top: 16px;
+    right: 100px;
+}
+
+#rank-number {
+    margin-top: -9px;
+    color: #00ab33;
+    font-size: 16px;
+}
+
+main {
+    background-color: #f2f4f7;
+    display: inline-block;
+    width: 100%;
+}
